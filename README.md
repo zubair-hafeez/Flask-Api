@@ -1,24 +1,53 @@
 ## Start Here
 
-Current folder flask_demo/api_demo
+- If you have not installed **git**, 
+  
+    Windows https://gitforwindows.org/
 
-Navigate a folder up to flask_demo
+    MAC users ```brew install git```
 
-cd .. 
+- Create a new folder (Example: demo) in your machine
+
+```
+git clone https://github.com/gchandra10/flask_demo.git
+
+cd flask_demo
+```
+
+- Rename the config_template.yaml to config.yaml
+- Substitute it with your MySQL details. (needed for Example 6 only)
+- Open VSCode and open flask_demo folder.
+
 
 ## Example 1
 
-```flask_demo> python3 api_demo/flask_01_simple_app.py
+```
+flask_demo> python3 api_demo/flask_01_simple_app.py
+```
 
+### Browser
+
+Open browser and navigate to http://127.0.0.1:5001/items
+
+### CLI
+
+```
 flask_demo> curl http://127.0.0.1:5001/items
+```
 
-api_demo> python3 -m unittest tests/test_02.py
+### Unit Test
+
+```
+flask_demo> python3 -m unittest tests/test_01.py
 ```
 
 ## Example 2
 
 ```
 flask_demo> python3 api_demo/flask_02_curd_app.py
+```
+
+### Browser
 
 http://127.0.0.1:5002/
 
@@ -26,14 +55,20 @@ http://127.0.0.1:5002/items
 
 http://127.0.0.1:5002/items/2
 
-curl -X POST -H "Content-Type: application/json" -d '{"name":"Item 3"}' http://127.0.0.1:5002/items
+### CLI
 
-curl -X PUT -H "Content-Type: application/json" -d '{"name":"New Updated Item 3"}' http://127.0.0.1:5002/items/3
+```
+flask_demo> curl -X POST -H "Content-Type: application/json" -d '{"name":"Item 3"}' http://127.0.0.1:5002/items
 
-curl -X DELETE  http://127.0.0.1:5002/items/3
+flask_demo> curl -X PUT -H "Content-Type: application/json" -d '{"name":"New Updated Item 3"}' http://127.0.0.1:5002/items/3
 
+flask_demo> curl -X DELETE  http://127.0.0.1:5002/items/3
+```
+
+### Unit Test
+
+```
 flask_demo> python3 -m unittest tests/test_02.py
-
 ```
 
 
@@ -43,24 +78,39 @@ flask_demo> python3 -m unittest tests/test_02.py
 python3 -r requirements.txt
 
 flask_demo>python3 api_demo/flask_03_basic_auth_app.py
+```
 
+### CLI
+
+```
 flask_demo>curl -X GET http://127.0.0.1:5003
 
 flask_demo>curl -u 'gc1:pass1' http://127.0.0.1:5003/items
+```
 
+### Unit Test
+
+```
+flask_demo> python3 -m unittest tests/test_03.py
 ```
 
 ## Example 4
 
 ```
-
 flask_demo>python3 api_demo/flask_04_jwt_auth_app.py
+```
 
+### CLI
+
+```
 curl -X POST -H "Content-Type: application/json" -d '{"username":"user1", "password":"password1"}' http://127.0.0.1:5004/login
+```
 
+**Copy the token after access_token and use it as given below.**
 
-Token expires in 30 seconds
+*This token expires in 30 seconds*
 
+```
 curl -X GET -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwNjU1NzkwMywianRpIjoiOTA3ZjAxYjYtMjJjNy00NTE0LWJhMmItNWY2MWU2ZmEzN2QxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6InVzZXIxIiwibmJmIjoxNzA2NTU3OTAzLCJjc3JmIjoiN2E3M2VmODUtOGQwOC00MjliLWIwYTgtMTRmMzc0Y2VhY2Y2IiwiZXhwIjoxNzA2NTU3OTMzfQ.ZOav8uBkvjsHLjU3VxPEA6z9uMOVjREsKkuI5gLGOno" http://127.0.0.1:5004/items
 
 ```
@@ -70,7 +120,6 @@ curl -X GET -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmc
 ```
 flask_demo>python3 api_demo/flask_05_jwt_auth_swagger_app.py
 ```
+### Browser
 
 Visit http://127.0.0.1:5005 to see different in screen
-
-
