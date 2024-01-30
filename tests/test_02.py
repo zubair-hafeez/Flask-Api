@@ -1,7 +1,7 @@
 import unittest
 import json
 from api_demo.flask_02_crud_app import app
-from sys import platform
+#from sys import platform
 
 class TestAPI(unittest.TestCase):
     def setUp(self):

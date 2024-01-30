@@ -124,3 +124,15 @@ flask_demo>python3 api_demo/flask_05_jwt_auth_swagger_app.py
 ### Browser
 
 Visit http://127.0.0.1:5005 to see different in screen
+
+## Example 6
+
+Remember to update config.yaml with your credentials
+
+Get sakila-data-02.sql and sakila-schema-01.sql from this.
+
+https://github.com/gchandra10/sakila_schema_data_mysql
+
+```
+flask_demo> python3 api_demo/flask_06_mysql_app.py
+```
