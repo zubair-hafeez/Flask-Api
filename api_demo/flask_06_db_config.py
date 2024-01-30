@@ -7,7 +7,7 @@ def load_config():
     Returns:
         dict: Configuration data.
     """
-    with open("config.yaml", "r") as file:
+    with open("api_demo/config.yaml", "r") as file:
         return yaml.safe_load(file)
 
 config = load_config()

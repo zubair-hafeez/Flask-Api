@@ -1,5 +1,4 @@
 ## Java Web Tokens
-
 from flask import Flask, jsonify, request
 from flask_jwt_extended import (
     JWTManager,

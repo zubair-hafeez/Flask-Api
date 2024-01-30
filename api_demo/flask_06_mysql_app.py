@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from api_demo.flask_06_db_config import get_mysql_connection
+from flask_06_db_config import get_mysql_connection
 from flask_restx import Api, Resource, fields
 
 app = Flask(__name__)
@@ -21,7 +21,7 @@ class sakila(Resource):
         Args: None
 
         Returns:
-            json: Hello World.
+            json: Welcome to Sakila Database.
         """
         return jsonify("Welcome to Sakila Database")
 
