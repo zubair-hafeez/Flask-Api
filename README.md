@@ -14,7 +14,7 @@ git clone https://github.com/gchandra10/flask_demo.git
 cd flask_demo
 ```
 
-- python3 -r requirements.txt
+- pip3 install -r requirements.txt
 - Rename the config_template.yaml to config.yaml
 - Substitute it with your MySQL details. (needed for Example 6 only)
 - Open VSCode and open flask_demo folder.
