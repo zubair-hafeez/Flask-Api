@@ -6,4 +6,5 @@ pyarrow
 PyJWT
 Flask-JWT-Extended
 flask-restx
+pyyaml
 
