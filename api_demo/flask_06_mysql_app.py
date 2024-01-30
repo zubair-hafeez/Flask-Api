@@ -1,8 +1,5 @@
 from flask import Flask, jsonify
-import pymysql
-import time
-import json
-from flask_demo.api_demo.flask_06_db_config import get_mysql_connection
+from api_demo.flask_06_db_config import get_mysql_connection
 from flask_restx import Api, Resource, fields
 
 app = Flask(__name__)
