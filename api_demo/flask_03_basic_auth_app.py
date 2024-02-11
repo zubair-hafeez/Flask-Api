@@ -7,24 +7,18 @@ api = Api(app)
 auth = HTTPBasicAuth()
 
 # Sample data
-items = [
-    {"id": 1, "name": "Item 1"},
-    {"id": 2, "name": "Item 2"}
-]
+items = [{"id": 1, "name": "Item 1"}, {"id": 2, "name": "Item 2"}]
 
 # Dummy user data for authentication (you should use a proper database)
-users = {
-        "gc1": "pass1",
-        "gc2": "pass2"
-        }
+users = {"gc1": "pass1", "gc2": "pass2"}
 
-@app.route('/', methods=['GET'])
+
+@app.route("/", methods=["GET"])
 def home_page():
-    return jsonify('Welcome to land of free access')
+    return jsonify("Welcome to land of free access")
 
 
-
-@app.route('/help', methods=['GET'])
+@app.route("/help", methods=["GET"])
 def help():
     return jsonify('curl -u "username:pwd" http://127.0.0.1/items')
 
@@ -42,11 +36,12 @@ def verify_password(username, password):
 #     return jsonify({"message": "Sorry the password you entered is not right"}), 401
 
 
-@app.route('/items', methods=['GET'])
+@app.route("/items", methods=["GET"])
 @auth.login_required
 def get_items():
     return jsonify(items)
-    #return jsonify("logged in user : ", auth.username(), "items requested : ", items)
+    # return jsonify("logged in user : ", auth.username(), "items requested : ", items)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(port=5003)

@@ -13,6 +13,7 @@ api = Api(
 # Establish database connections
 mysql_conn = get_mysql_connection()
 
+
 @api.route("/", methods=["GET"])
 class sakila(Resource):
     def get():
@@ -68,7 +69,7 @@ class film(Resource):
                 film = film_data
             else:
                 return jsonify({"message": "Film not found"}), 404
-            
+
         return jsonify({"film": film})
 
 
@@ -115,9 +116,53 @@ class film_actor(Resource):
                     }
                 )
 
-        return jsonify(
-            {"actors": actors_data}
-        )
+        return jsonify({"actors": actors_data})
+
+
+@api.route("/movie/<int:film_id>/actors", methods=["GET"])
+class movie_actor(Resource):
+    @api.doc(model=[film_actor_model])
+    def get(self, film_id):
+        """Retrieve all actors for a given movie and other films acted by them.
+
+        Args:
+            film_id (int): The ID of the film.
+
+        Returns:
+            json: Actor details and other films they have acted in, along with the source and time taken.
+        """
+        actors_data = []
+        with mysql_conn.cursor() as cursor:
+            actor_query = """
+            SELECT a.actor_id, a.first_name, a.last_name
+            FROM actor a
+            JOIN film_actor fa ON a.actor_id = fa.actor_id
+            WHERE fa.film_id = %s
+            """
+            cursor.execute(actor_query, (film_id,))
+            actors = cursor.fetchall()
+
+            for actor in actors:
+                actor_id, first_name, last_name = actor
+                other_films_query = """
+                SELECT f.film_id, f.title
+                FROM film f
+                JOIN film_actor fa ON f.film_id = fa.film_id
+                WHERE fa.actor_id = %s AND f.film_id != %s
+                """
+                cursor.execute(other_films_query, (actor_id, film_id))
+                other_films = cursor.fetchall()
+
+                actors_data.append(
+                    {
+                        "actor_id": actor_id,
+                        "first_name": first_name,
+                        "last_name": last_name,
+                        "other_films": other_films,
+                    }
+                )
+
+        return jsonify({"actors": actors_data})
 
 
 if __name__ == "__main__":

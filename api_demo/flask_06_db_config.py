@@ -1,6 +1,7 @@
 import pymysql
 import yaml
 
+
 def load_config():
     """Load configuration from the YAML file.
 
@@ -10,7 +11,9 @@ def load_config():
     with open("api_demo/config.yaml", "r") as file:
         return yaml.safe_load(file)
 
+
 config = load_config()
+
 
 def get_mysql_connection():
     """Create a MySQL connection using the configuration.
