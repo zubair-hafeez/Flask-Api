@@ -1,9 +1,0 @@
-flask-restful
-flask-httpauth
-pymysql
-flask
-pyarrow
-PyJWT
-Flask-JWT-Extended
-flask-restx
-pyyaml

@@ -1,4 +1,4 @@
-## Start Here
+# Start Here
 
 - If you have not installed **git**, 
   
@@ -9,21 +9,35 @@
 - Create a new folder (Example: demo) in your machine
 
 ```
-git clone https://github.com/gchandra10/flask_demo.git
+git clone https://github.com/gchandra10/python_flask_demo.git
 
-cd flask_demo
+cd python_flask_demo
 ```
-
-- pip3 install -r requirements.txt
+- poetry update
 - Rename the config_template.yaml to config.yaml
 - Substitute it with your MySQL details. (needed for Example 6 only)
 - Open VSCode and open flask_demo folder.
 
+## Example 0
+
+```
+poetry run python api_demo/flask_00_itempotency_demo.py
+```
+
+```
+curl -X GET http://127.0.0.1:5000/item/1 
+
+curl -X GET http://127.0.0.1:5000/item/10
+
+curl -X PUT -H "Content-Type: application/json" -d '{"name": "Updated item 3", "description": "This is the updated item 3"}' http://127.0.0.1:5000/item/3
+
+curl -X DELETE http://127.0.0.1:5000/item/3
+```
 
 ## Example 1
 
 ```
-flask_demo> python3 api_demo/flask_01_simple_app.py
+poetry run python api_demo/flask_01_simple_app.py
 ```
 
 ### Browser
@@ -33,19 +47,19 @@ Open browser and navigate to http://127.0.0.1:5001/items
 ### CLI
 
 ```
-flask_demo> curl http://127.0.0.1:5001/items
+curl http://127.0.0.1:5001/items
 ```
 
 ### Unit Test
 
 ```
-flask_demo> python3 -m unittest tests/test_01.py
+poetry run python -m unittest tests/test_01.py
 ```
 
 ## Example 2
 
 ```
-flask_demo> python3 api_demo/flask_02_crud_app.py
+poetry run python api_demo/flask_02_crud_app.py
 ```
 
 ### Browser
@@ -59,46 +73,44 @@ http://127.0.0.1:5002/items/2
 ### CLI
 
 ```
-flask_demo> curl -X POST -H "Content-Type: application/json" -d '{"name":"Item 3"}' http://127.0.0.1:5002/items
+curl -X POST -H "Content-Type: application/json" -d '{"name":"Item 3"}' http://127.0.0.1:5002/items
 
-flask_demo> curl -X PUT -H "Content-Type: application/json" -d '{"name":"New Updated Item 3"}' http://127.0.0.1:5002/items/3
+curl -X PUT -H "Content-Type: application/json" -d '{"name":"New Updated Item 3"}' http://127.0.0.1:5002/items/3
 
-flask_demo> curl -X DELETE  http://127.0.0.1:5002/items/3
+curl -X DELETE  http://127.0.0.1:5002/items/3
 ```
 
 ### Unit Test
 
 ```
-flask_demo> python3 -m unittest tests/test_02.py
+poetry run python -m unittest tests/test_02.py
 ```
 
 
 ## Example 3
 
 ```
-python3 -r requirements.txt
-
-flask_demo>python3 api_demo/flask_03_basic_auth_app.py
+poetry run python api_demo/flask_03_basic_auth_app.py
 ```
 
 ### CLI
 
 ```
-flask_demo>curl -X GET http://127.0.0.1:5003
+curl -X GET http://127.0.0.1:5003
 
-flask_demo>curl -u 'gc1:pass1' http://127.0.0.1:5003/items
+curl -u 'gc1:pass1' http://127.0.0.1:5003/items
 ```
 
 ### Unit Test
 
 ```
-flask_demo> python3 -m unittest tests/test_03.py
+poetry run python -m unittest tests/test_03.py
 ```
 
 ## Example 4
 
 ```
-flask_demo>python3 api_demo/flask_04_jwt_auth_app.py
+poetry run python api_demo/flask_04_jwt_auth_app.py
 ```
 
 ### CLI
@@ -106,7 +118,6 @@ flask_demo>python3 api_demo/flask_04_jwt_auth_app.py
 ```
 curl -X POST -H "Content-Type: application/json" -d '{"username":"user1", "password":"password1"}' http://127.0.0.1:5004/login
 ```
-
 **Copy the token after access_token and use it as given below.**
 
 *This token expires in 30 seconds*
@@ -119,7 +130,7 @@ curl -X GET -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmc
 ## Example 5
 
 ```
-flask_demo>python3 api_demo/flask_05_jwt_auth_swagger_app.py
+poetry run python api_demo/flask_05_jwt_auth_swagger_app.py
 ```
 ### Browser
 
@@ -134,5 +145,6 @@ Get sakila-data-02.sql and sakila-schema-01.sql from this.
 https://github.com/gchandra10/sakila_schema_data_mysql
 
 ```
-flask_demo> python3 api_demo/flask_06_mysql_app.py
+poetry run python api_demo/flask_06_mysql_app.py
 ```
+
