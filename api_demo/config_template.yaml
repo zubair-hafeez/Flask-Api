@@ -3,3 +3,4 @@ mysql:
   user: your_username
   password: your_pwd
   port: your_port
+  database: your_database

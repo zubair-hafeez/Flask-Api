@@ -26,5 +26,5 @@ def get_mysql_connection():
         port=config["mysql"]["port"],
         user=config["mysql"]["user"],
         password=config["mysql"]["password"],
-        db="dbworldgc_mysql",
+        db=config["mysql"]["database"],
     )
