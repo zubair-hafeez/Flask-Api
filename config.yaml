@@ -1,0 +1,9 @@
+mysql:
+  host: elvis.rowan.edu
+  port: 3306
+  user: hafeez49
+  password: 1Hafeez49BigData!!
+  database: sakila
+
+
+  
